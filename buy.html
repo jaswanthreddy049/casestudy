@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate Filter</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            padding-top: 80px;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            padding: 10px 20px;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+
+        /* Logo */
+        .logo img {
+            height: 50px;
+        }
+
+        /* Filter Dropdown */
+        .filter-container select {
+            padding: 8px 12px;
+            font-size: 16px;
+            border: 2px solid #333;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: white;
+        }
+
+        /* Scrollable Gallery */
+        .gallery-container {
+            margin-top: 80px;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 20px;
+            overflow-y: auto;
+            max-height: 500px;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .property {
+            width: 300px;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .property img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .details h3 {
+            margin: 10px 0 5px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <div class="header">
+        <!-- Logo at Top Left -->
+        <div class="logo">
+            <img src="images/images/logo.jpeg" alt="Real Estate Logo"><h3>WEALTH HOME</h3>
+        </div>
+
+        <!-- Filter Dropdown at Top Right -->
+        <div class="filter-container">
+            <label for="property-filter">Filter: </label>
+            <select id="property-filter" onchange="updateGallery()">
+                <option value="gated">Gated Community</option>
+                <option value="apartment">Apartment</option>
+                <option value="individual">Individual House</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Scrollable Gallery Section -->
+    <div class="gallery-container">
+        <div class="gallery" id="gallery">
+            <!-- Property items will be inserted dynamically -->
+        </div>
+    </div>
+
+    <script>
+        // Property Data
+        const properties = {
+            gated: [
+                { image: "images/images/WhatsApp Image 2025-03-05 at 11.37.38 AM.jpeg", price: "$750,000", area: "2500 sq ft", location: "Los Angeles" },
+                { image: "images/images/WhatsApp Image 2025-03-05 at 11.37.39 AM.jpeg", price: "$800,000", area: "2700 sq ft", location: "San Diego" },
+                { image: "images/images/WhatsApp Image 2025-03-05 at 11.37.40 AM.jpeg", price: "$850,000", area: "3000 sq ft", location: "Miami" }
+            ],
+            apartment: [
+                { image: "images/images/WhatsApp Image 2025-03-05 at 12.04.01 PM.jpeg", price: "$400,000", area: "1500 sq ft", location: "San Francisco" },
+                { image: "images/images/app2.jpeg", price: "$420,000", area: "1600 sq ft", location: "Seattle" },
+                { image: "images/images/app3.jpeg", price: "$450,000", area: "1700 sq ft", location: "Chicago" }
+            ],
+            individual: [
+                { image: "images/images/individual.jpeg", price: "$600,000", area: "1800 sq ft", location: "Houston" },
+                { image: "images/images/individual2.jpeg", price: "$650,000", area: "1900 sq ft", location: "Dallas" },
+                { image: "images/images/individual3.jpeg", price: "$700,000", area: "2100 sq ft", location: "Denver" }
+            ]
+        };
+
+        // Function to update gallery
+        function updateGallery() {
+            const selectedType = document.getElementById("property-filter").value;
+            const gallery = document.getElementById("gallery");
+            const selectedProperties = properties[selectedType];
+
+            // Clear previous images
+            gallery.innerHTML = "";
+
+            // Insert new images with details
+            selectedProperties.forEach(property => {
+                const propertyDiv = document.createElement("div");
+                propertyDiv.classList.add("property");
+
+                propertyDiv.innerHTML = `
+                    <img src="${property.image}" alt="Property Image">
+                    <div class="details">
+                        <h3>Price: ${property.price}</h3>
+                        <p><strong>Area:</strong> ${property.area}</p>
+                        <p><strong>Location:</strong> ${property.location}</p>
+                    </div>
+                `;
+
+                gallery.appendChild(propertyDiv);
+            });
+        }
+
+        // Initialize the page with default selection
+        updateGallery();
+    </script>
+
+</body>
+</html>
