@@ -91,7 +91,7 @@
     <div class="header">
         <!-- Logo at Top Left -->
         <div class="logo">
-            <img src="images/images/logo.jpeg" alt="Real Estate Logo"><h3>WEALTH HOME</h3>
+            <img src="images/logo.jpeg" alt="Real Estate Logo"><h3>WEALTH HOME</h3>
         </div>
 
         <!-- Filter Dropdown at Top Right -->
@@ -116,19 +116,23 @@
         // Property Data
         const properties = {
             gated: [
-                { image: "images/images/WhatsApp Image 2025-03-05 at 11.37.38 AM.jpeg", price: "$750,000", area: "2500 sq ft", location: "Los Angeles" },
-                { image: "images/images/WhatsApp Image 2025-03-05 at 11.37.39 AM.jpeg", price: "$800,000", area: "2700 sq ft", location: "San Diego" },
-                { image: "images/images/WhatsApp Image 2025-03-05 at 11.37.40 AM.jpeg", price: "$850,000", area: "3000 sq ft", location: "Miami" }
+                { image: "images/WhatsApp Image 2025-03-05 at 11.37.38 AM.jpeg",link:"details1.html",price: "$750,000", area: "2500 sq ft", location: "Los Angeles" },
+                { image: "images/WhatsApp Image 2025-03-05 at 11.37.39 AM.jpeg", link:"details2.html",price: "$800,000", area: "2700 sq ft", location: "San Diego" },
+                { image: "images/WhatsApp Image 2025-03-05 at 11.37.40 AM.jpeg", link:"details1.html",price: "$800,000", area: "3000 sq ft", location: "Miami" }
             ],
             apartment: [
-                { image: "images/images/WhatsApp Image 2025-03-05 at 12.04.01 PM.jpeg", price: "$400,000", area: "1500 sq ft", location: "San Francisco" },
-                { image: "images/images/app2.jpeg", price: "$420,000", area: "1600 sq ft", location: "Seattle" },
-                { image: "images/images/app3.jpeg", price: "$450,000", area: "1700 sq ft", location: "Chicago" }
+                { image: "images/WhatsApp Image 2025-03-05 at 12.04.01 PM.jpeg", link:"details1.html",price: "$400,000", area: "1500 sq ft", location: "San Francisco" },
+                { image: "images/app2.jpeg", price: "$420,000", area: "1600 sq ft",link:"details2.html", location: "Seattle" },
+                { image: "images/app3.jpeg", price: "$450,000", area: "1700 sq ft",link:"details1.html", location: "Chicago" },
+                { image: "images/appartment4.jpeg", price: "$400,000",link:"details1.html", area: "1500 sq ft", location: "San Francisco" },
+                { image: "images/appartment5.jpeg", price: "$420,000",link:"details2.html", area: "1600 sq ft", location: "Seattle" },
+                { image: "images/appartment6.jpeg", price: "$450,000",link:"details2.html", area: "1700 sq ft", location: "Chicago" },
+                { image: "images/appartment7.jpeg", price: "$450,000", link:"details1.html",area: "1700 sq ft", location: "Chicago" }
             ],
             individual: [
-                { image: "images/images/individual.jpeg", price: "$600,000", area: "1800 sq ft", location: "Houston" },
-                { image: "images/images/individual2.jpeg", price: "$650,000", area: "1900 sq ft", location: "Dallas" },
-                { image: "images/images/individual3.jpeg", price: "$700,000", area: "2100 sq ft", location: "Denver" }
+                { image: "images/individual.jpeg", price: "$600,000",link:"details2.html", area: "1800 sq ft", location: "Houston" },
+                { image: "images/individual2.jpeg", price: "$650,000",link:"details2.html", area: "1900 sq ft", location: "Dallas" },
+                { image: "images/individual3.jpeg", price: "$700,000",link:"details1.html", area: "2100 sq ft", location: "Denver" }
             ]
         };
 
@@ -145,6 +149,7 @@
             selectedProperties.forEach(property => {
                 const propertyDiv = document.createElement("div");
                 propertyDiv.classList.add("property");
+                propertyDiv.onclick = () => window.location.href = property.link;
 
                 propertyDiv.innerHTML = `
                     <img src="${property.image}" alt="Property Image">
