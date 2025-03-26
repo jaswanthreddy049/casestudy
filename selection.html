@@ -12,10 +12,12 @@
             font-family: Arial, sans-serif;
         }
         .logo img {
+            border-radius:50%;
             height: 50px;
-            margin-left: 5px;
+            width:50px;
         }
         body {
+            background-color: rgb(110, 164, 182);
             display: flex;
             flex-direction: column;
             height: 100vh;
@@ -58,14 +60,13 @@
 </head>
 <body>
     <div class="logo">
-            <img src="images/images/logo.jpeg" alt="Real Estate Logo">
+            <img src="images/logo.jpeg" alt="Real Estate Logo">
+            <div class="logo"><h3>WEALTH HOME</h3></div>
         </div>
-        <h3>WEALTH HOME</h3>
 
     <!-- Top Right Buy | Sell | Rent Links -->
     <div class="top-right">
         <a href="buy.html" >Buy</a>  |
-        <a href="sell.html">Sell</a> | 
         <a href="rent.html">Rent</a>
     </div>
 
@@ -73,14 +74,14 @@
     <div class="container">
         <!-- Middle Left: Dream House Text -->
         <div class="left-content">
-            <h2>Find Your Dream House</h2>
-            <p>Discover the best properties at the best locations. Buy, sell, or rent with confidence.</p>
+            <h3>Find Your Dream House</h3>
+            <p>Discover the best properties at the best locations. Buy or rent with confidence.</p>
         </div>
 
         <!-- Middle Right: Video -->
         <div class="right-video">
-            <video controls loop autoplay>
-                <source src="images/images/video.mp4" type="video/mp4">
+            <video controls>
+                <source src="images/video.mp4">
                 Your browser does not support the video tag.
             </video>
             
